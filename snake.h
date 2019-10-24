@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <assert.h>
+#include <termios.h>
 
 #include "common.h"
 
@@ -48,6 +49,8 @@ typedef struct Snake{
   volatile bool snakeIsFull;
 
   pthread_t thread;
+
+  struct termios oldt;
 } Snake;
 
 Snake *Snake_new(GRID, GRID);

@@ -1,4 +1,3 @@
-#include <termios.h>
 #include <unistd.h>
 
 #include "snake.h"
@@ -118,6 +117,7 @@ Snake *Snake_new(GRID width, GRID height) {
     snake->current_orient = ORIENTATION_right;
     snake->next_orient = ORIENTATION_right;
     snake->snakeIsFull = false;
+    tcgetattr(STDIN_FILENO, &snake->oldt);
     
     printf("snake init position (%d, %d)\n", snake->head->x, snake->head->y);
     pthread_create(&snake->thread, NULL, Snake_RecieveCMD, snake);
@@ -133,6 +133,8 @@ void Snake_delete(Snake *snake) {
       free(snake->head);
       snake->head = NULL;
     }
+
+    tcsetattr(STDIN_FILENO, TCSANOW, &snake->oldt);
     free(snake);
     snake = NULL;
   }
