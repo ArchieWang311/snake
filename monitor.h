@@ -8,7 +8,6 @@
 extern "C" {
 #endif
 
-typedef uint8_t GRID;
 
 typedef struct Monitor{
   GRID width;

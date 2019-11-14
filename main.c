@@ -33,4 +33,5 @@ int main(int argc, char *argv[]) {
     }
     Snake_delete(snake);
   }
+	return 0;
 }

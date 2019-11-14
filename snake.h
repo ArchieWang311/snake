@@ -35,8 +35,8 @@ typedef struct node{
 
 typedef struct Snake{
   Node *head;
-  u_int16_t totalNode;
-  u_int16_t highestPoint;
+  uint16_t totalNode;
+  uint16_t highestPoint;
 
   GRID liveInBoxWidth;
   GRID liveInBoxHeight;
